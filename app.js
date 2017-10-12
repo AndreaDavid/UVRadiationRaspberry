@@ -1,8 +1,12 @@
-var numero1=10;
-var numero2=20;
-var reqUrl = "http://mvwin10julian.eastus.cloudapp.azure.com:8784/uvradiation/raspberrycontroller/insertarTracks"; 
-var request = require('request');
+
+var reqUrl = "http://mvwin10julian.eastus.cloudapp.azure.com:8784/uvradiation/raspberrycontroller/insertarTracks"; //direccion servidor
+var request = require('request');//obtener librerria request
 setInterval(function(){
+
+
+
+//LEER SENSOR
+
   request.post(
     reqUrl,
     { 
@@ -23,13 +27,11 @@ setInterval(function(){
 		]
     },
     function (error, response, body) {
-        if (!error && response.statusCode == 200) {
+        if (!error && response.statusCode == 200) {//CODIGO DE RESPUESTA 200
             console.log(body)
         }else{
-	    console.log(error);
-	}
+	     console.log(error);
+	    }
     console.log(response.statusCode);
     });
-  console.log(numero1+numero2);
-  numero1++;
 },1000);
